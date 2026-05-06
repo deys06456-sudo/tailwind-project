@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foodi — Taste Happiness in Every Bite</title>
+
+    <!-- ── Tailwind CSS ── -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ── Clash Display Font (Fontshare) ── -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+
+    <!-- ── Playfair Display Font (Google Fonts) ── -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+
+    <!-- ── Font Awesome Icons ── -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- ── Animate.css ── -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- ── AOS (Animate On Scroll) ── -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- ── Swiper Slider ── -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Clash Display'],
+                        display: ['Playfair Display'],
+                    },
+                    colors: {
+                        orange: {
+                            DEFAULT: '#F97316',
+                            dark: '#EA580C',
+                            light: '#FED7AA',
+                        },
+                    },
+                    maxWidth: {
+                        container: '1350px',
+                    },
+                    keyframes: {
+                        slowZoom: {
+                            '0%': { transform: 'scale(1.05)' },
+                            '100%': { transform: 'scale(1.0)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(28px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                    animation: {
+                        slowZoom: 'slowZoom 18s ease-out forwards',
+                        fadeUp0: 'fadeUp 0.7s 0.3s both',
+                        fadeUp1: 'fadeUp 0.8s 0.5s both',
+                        fadeUp2: 'fadeUp 0.8s 0.75s both',
+                        fadeUp3: 'fadeUp 1.0s 1.1s both',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #F97316;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.25s;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .btn-outline-hero:hover {
+            border-color: #F97316;
+            background: rgba(249, 115, 22, 0.08);
+        }
+
+        #mobile-menu {
+            display: none;
+        }
+
+        #mobile-menu.open {
+            display: flex;
+        }
+
+        /* Fix: filter pill hover & active */
+
+        .filter-pill:hover {
+            border-color: #F97316;
+            color: #F97316;
+        }
+
+        .filter-pill.active {
+            border-color: #F97316;
+            color: #F97316;
+        }
+    </style>
+</head>
+
+<body class="bg-neutral-950 text-white font-sans overflow-x-hidden">
+
+    <!-- ════ NAVBAR ════ -->
+
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 h-[72px]
+            bg-white/10 backdrop-blur-md border-b border-white/10
+            transition-colors duration-300">
+        <div class="max-w-container mx-auto sm:px-8 h-full flex items-center justify-between">
+
+            <!-- LOGO -->
+
+            <a href="#" class="flex items-center shrink-0">
+                <img src="assets/images/logo/logo-section.png" alt="Foodi Logo"
+                    class="h-8 sm:h-9 w-auto object-contain" />
+            </a>
+
+            <!-- NAV LINKS -->
+
+            <nav class="hidden md:block">
+                <ul class="flex items-center gap-9">
+                    <li><a href="index.html"
+                            class="nav-link relative text-[20px] font-medium text-white/80 hover:text-white transition-colors duration-200">Home</a>
+                    </li>
+                    <li><a href="menu.html"
+                            class="nav-link relative text-[20px] font-medium text-white/80 hover:text-white transition-colors duration-200">Menu</a>
+                    </li>
+                    <li><a href="#"
+                            class="nav-link relative text-[20px] font-medium text-white/80 hover:text-white transition-colors duration-200">About
+                            Us</a>
+                    </li>
+                    <li><a href="chef.html"
+                            class="nav-link relative text-[20px] font-medium text-white/80 hover:text-white transition-colors duration-200">Chef</a>
+                    </li>
+                    <li><a href="blog.html"
+                            class="nav-link relative text-[20px] font-medium text-white/80 hover:text-white transition-colors duration-200">Blog</a>
+                    </li>
+                    <li><a href="contact.html"
+                            class="nav-link relative text-[20px] font-medium text-white/80 hover:text-white transition-colors duration-200">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- NAV ACTIONS -->
+
+            <div class="flex items-center gap-4 shrink-0">
+                <button aria-label="Shopping cart"
+                    class="text-white/70 hover:text-orange transition-colors duration-200">
+                    <svg class="w-[22px] h-[24px]" fill="none" stroke="currentColor" stroke-width="1.6"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg>
+                </button>
+                <a href="#" class="bg-orange hover:bg-orange-dark text-white text-[13px] font-semibold
+                  uppercase tracking-[1.2px] px-[22px] py-[10px] rounded-[6px]
+                  transition-all duration-200 hover:-translate-y-px">
+                    Login
+                </a>
+
+                <!-- Hamburger -->
+
+                <button id="hamburger" class="lg:hidden flex flex-col gap-[5px] ml-1" aria-label="Menu">
+                    <span class="block w-6 h-0.5 bg-white rounded transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-white rounded transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-white rounded transition-all"></span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="lg:hidden flex-col bg-black/95 backdrop-blur-xl border-t border-white/10 px-6 py-6 gap-4">
+            <a href="#" class="text-[16px] font-medium text-white/80 hover:text-orange transition-colors py-1">Home</a>
+            <a href="#" class="text-[16px] font-medium text-white/80 hover:text-orange transition-colors py-1">Menu</a>
+            <a href="#" class="text-[16px] font-medium text-white/80 hover:text-orange transition-colors py-1">About
+                Us</a>
+            <a href="#" class="text-[16px] font-medium text-white/80 hover:text-orange transition-colors py-1">Chef</a>
+            <a href="#" class="text-[16px] font-medium text-white/80 hover:text-orange transition-colors py-1">Blog</a>
+            <a href="#"
+                class="text-[16px] font-medium text-white/80 hover:text-orange transition-colors py-1">Contact</a>
+        </div>
+    </header>
+
+
+    <!-- ════ HERO SECTION ════ -->
+
+    <section class="bg-[#1F1F1F] min-h-screen flex items-center overflow-hidden">
+
+        <!-- Content -->
+
+        <div class="relative z-10 w-full pt-[72px]">
+            <div class="mx-auto px-4 sm:px-8 flex flex-col items-center text-center">
+                <h1 class="font-sans animate-fadeUp1 font-display font-semibold leading-[1.04] tracking-[-2px] mb-6 sm:mb-8
+            max-w-[280px] sm:max-w-[600px] lg:max-w-[1000px] text-center mx-auto text-[clamp(14px,7.5vw,36px)] ">
+                    <span class="text-white"> Home /&nbsp;</span><span class="text-orange">Contact Us</span>
+                </h1>
+            </div>
+            <div
+                class="font-sans text-[14px] sm:text-[16px] text-gray-400 font-medium mb-6 sm:mb-8 max-w-[784px] text-center mx-auto">
+                Lorem ipsum dolor sit amet
+                consectetur. Dolor elit vitae nunc varius. Facilisis eget cras sit semper sit enim. Turpis aliquet at ac
+                eu donec ut. Sagittis vestibulum at quis non massa netus.</div>
+        </div>
+    </section>
+
+    <div class="bg-[#0f0f0f] text-white min-h-screen">
+
+        <section class="max-w-container mx-auto px-6 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 ">
+
+                <!-- Left: Contact Form -->
+                <div class="lg:col-span-3">
+                    <h1 class="text-3xl md:text-4xl font-semibold text-[14px] sm:text-[36px] text-white mb-2">Get In
+                        Touch</h1>
+                    <p class="text-gray-400 text-sm mb-10 font-sans font-medium text-[14px] sm:text-[16px]">Your email
+                        address will not be published. Required fields are
+                        marked</p>
+
+                    <!-- Name + Email -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label
+                                class="block text-sm text-white mb-2 font-sans font-semibold text-[14px] sm:text-[25px]">Your
+                                Name :</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                                    </svg>
+                                </span>
+                                <input type="text" placeholder=""
+                                    class="input-field w-full rounded-lg pl-9 pr-4 py-3 text-sm" />
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-sans font-semibold text-[14px] sm:text-[25px] text-white mb-2">Email
+                                :</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                    </svg>
+                                </span>
+                                <input type="email" placeholder=""
+                                    class="input-field w-full rounded-lg pl-9 pr-4 py-3 text-sm" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subjects -->
+                    <div class="mb-6">
+                        <label
+                            class="block text-sm font-sans font-semibold text-[14px] sm:text-[25px] text-white mb-2">Subjects
+                            :</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+                                </svg>
+                            </span>
+                            <input type="text" placeholder=""
+                                class="input-field w-full rounded-lg pl-9 pr-4 py-3 text-sm" />
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="mb-8">
+                        <label
+                            class="block text-sm font-sans font-semibold text-[14px] sm:text-[25px] text-white mb-2">Message
+                            :</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-4 text-gray-500">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                                </svg>
+                            </span>
+                            <textarea rows="7" placeholder=""
+                                class="input-field w-full rounded-lg pl-9 pr-4 py-3 text-sm resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button
+                        class="bg-[#e8934a] hover:bg-[#d4823a] text-white font-sans font-medium text-[14px] sm:text-[18px] uppercase tracking-widest px-8 py-4 rounded-lg transition-colors duration-300 hover:bg-orange-dark">
+                        Send Message
+                    </button>
+                </div>
+
+                <!-- Right: Info Card -->
+                <div class="lg:col-span-2 ">
+                    <div class="info-card rounded-2xl p-8 space-y-8 h-full bg-[#1a2020] border border-[#2a3535]">
+
+                        <!-- Address -->
+                        <div>
+                            <h2 class="text-lg font-sans font-semibold text-[14px] sm:text-[25px] text-white mb-3">
+                                Address :</h2>
+                            <p class="text-gray-400 font-sans font-medium text-[14px] sm:text-[16px] leading-relaxed">
+                                543 Country Club Ave, NC 27587, London, UK
+                                +1257 6541120</p>
+                        </div>
+
+                        <hr class="border-[#2a3535]" />
+
+                        <!-- Contact -->
+                        <div>
+                            <h2 class="text-lg font-sans font-semibold text-[14px] sm:text-[25px] text-white mb-3">
+                                Contact :</h2>
+                            <p class="text-gray-400 font-sans font-medium text-[14px] sm:text-[16px] mb-1">Phone :
+                                +918348457995</p>
+                            <p class="text-gray-400 font-sans font-medium text-[14px] sm:text-[16px]">Email :
+                                Foodl018@gmail.com</p>
+                        </div>
+
+                        <hr class="border-[#2a3535]" />
+
+                        <!-- Opening Hours -->
+                        <div>
+                            <h2 class="text-lg font-sans font-semibold text-[14px] sm:text-[25px] text-white mb-3">
+                                Opening Hours :</h2>
+                            <p class="text-gray-400 font-sans font-medium text-[14px] sm:text-[16px] mb-1">Monday -
+                                Friday : 9:00 AM - 10:00 PM</p>
+                            <p class="text-gray-400 font-sans font-medium text-[14px] sm:text-[16px]">Saturday - Sunday
+                                : 9:00 AM - 7:00 PM</p>
+                        </div>
+
+                        <hr class="border-[#2a3535]" />
+
+                        <!-- Stay Connected -->
+                        <div>
+                            <h2
+                                class="text-lg font-bold text-white mb-4 font-sans font-semibold text-[14px] sm:text-[25px]">
+                                Stay Connected :</h2>
+                            <div class="flex items-center gap-3">
+                                <!-- Facebook -->
+                                <a href="https://www.facebook.com/"
+                                    class="social-btn w-10 h-10 rounded-full bg-[#1a1d27] rounded-full border border-gray-600 flex items-center justify-center transition-all duration-300 hover:bg-[#c8a040]">
+                                    <i class="fa-brands fa-facebook-f text-white text-xs"></i>
+                                </a>
+                                <!-- X / Twitter -->
+                                <a href="https://twitter.com/"
+                                    class="social-btn w-10 h-10 rounded-full bg-[#1a1d27] rounded-full border border-gray-600 flex items-center justify-center transition-all duration-300 hover:bg-[#c8a040]">
+                                    <i class="fa-brands fa-x-twitter text-white text-xs"></i>
+                                </a>
+                                <!-- Instagram -->
+                                <a href="http://instagram.com/"
+                                    class="social-btn w-10 h-10 rounded-full flex bg-[#1a1d27] rounded-full border border-gray-600 items-center justify-center transition-all duration-300 hover:bg-[#c8a040]">
+                                    <i class="fa-brands fa-instagram text-xs"></i>
+                                </a>
+                                <!-- LinkedIn -->
+                                <a href="http://linkedin.com/"
+                                    class="social-btn w-10 h-10 rounded-full bg-[#1a1d27] rounded-full border border-gray-600 flex items-center justify-center transition-all duration-300 hover:bg-[#c8a040]">
+                                    <i class="fa-brands fa-linkedin-in text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative w-full flex items-center min-h-[300px] sm:min-h-[600px] lg:min-h-[781px]">
+            <div class="absolute inset-0 w-full h-full">
+                <img src="assets/images/map/html-body.png" alt="Chef"
+                    class="w-full h-full object-cover object-center" />
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ════ FOOTER ════ -->
+    <footer class="bg-[#0d1117] pt-14">
+        <div class="max-w-container mx-auto px-4 sm:px-8">
+
+            <!-- Footer Top -->
+            <div class="flex flex-wrap pb-10 border-b border-gray-800">
+
+                <!-- Col 1 — Logo + Description -->
+                <div class="w-full min-[576px]:w-1/2 min-[991px]:w-1/4 pr-6 mb-8 min-[991px]:mb-0" data-aos="fade-up"
+                    data-aos-duration="800">
+                    <div class="mb-4">
+                        <img src="assets/images/logo/logo-section.png" alt="Foodi" class="h-8" />
+                    </div>
+                    <p
+                        class="text-gray-400 text-[12px] sm:text-[14px] font-medium font-sans max-w-[386px] leading-relaxed mb-5">
+                        Lorem ipsum dolor sit amet consectetur. Tristique cursus morbi nibh nec et vulputate.
+                        Turpis tortor nisi imperdiet quis accumsan. Ligula netus amet leo ultrices. Neque
+                        venenatis magnis amet eget sagittis leo enim.
+                    </p>
+                    <!-- Social Icons -->
+                    <div class="flex items-center">
+                        <a href="https://www.facebook.com/"
+                            class="w-8 h-8 bg-[#1a1d27] rounded-full border border-gray-600 flex items-center justify-center hover:bg-[#c8a040] transition-colors duration-200 mr-2">
+                            <i class="fa-brands fa-facebook-f text-white text-xs"></i>
+                        </a>
+                        <a href="https://twitter.com/"
+                            class="w-8 h-8 bg-[#1a1d27] rounded-full border border-gray-600 flex items-center justify-center hover:bg-[#c8a040] transition-colors duration-200 mr-2">
+                            <i class="fa-brands fa-x-twitter text-white text-xs"></i>
+                        </a>
+                        <a href="http://instagram.com/"
+                            class="w-8 h-8 bg-[#1a1d27] rounded-full border border-gray-600 flex items-center justify-center hover:bg-[#c8a040] transition-colors duration-200 mr-2">
+                            <i class="fa-brands fa-instagram text-xs"></i>
+                        </a>
+                        <a href="http://linkedin.com/"
+                            class="w-8 h-8 bg-[#1a1d27] rounded-full border border-gray-600 flex items-center justify-center hover:bg-[#c8a040] transition-colors duration-200">
+                            <i class="fa-brands fa-linkedin-in text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2 — Contact Us -->
+                <div class="w-full min-[576px]:w-1/2 min-[991px]:w-1/4 pr-6 mb-8 min-[991px]:mb-0" data-aos="fade-up"
+                    data-aos-duration="800" data-aos-delay="100">
+                    <span class="text-white font-semibold text-[14px] sm:text-[25px] mb-5">Contact Us</span>
+                    <ul>
+                        <li class="flex items-center mb-4">
+                            <i class="fa-regular fa-envelope text-gray-400 text-sm mr-3"></i>
+                            <a href="mailto:infofoodi@gmail.com"
+                                class="text-gray-400 font-sans font-medium text-[14px] sm:text-[20px] hover:text-white transition">infofoodi@gmail.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone text-gray-400 text-sm mr-3 w-5"></i>
+                            <a href="tel:+917029112661"
+                                class="text-gray-400 font-sans font-medium text-[14px] sm:text-[20px] hover:text-white transition">+917029112661</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 — User Link -->
+                <div class="w-full min-[576px]:w-1/2 min-[991px]:w-1/4 pr-6 mb-8 min-[576px]:mb-0" data-aos="fade-up"
+                    data-aos-duration="800" data-aos-delay="200">
+                    <span class="text-white font-semibold text-[14px] sm:text-[25px] mb-5">User Link</span>
+                    <ul>
+                        <li class="mb-3">
+                            <a href="#"
+                                class="text-gray-400 font-sans font-medium text-[14px] sm:text-[20px] hover:text-white transition">About
+                                Us</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="#"
+                                class="text-gray-400 font-sans font-medium text-[14px] sm:text-[20px] hover:text-white transition">Contact
+                                Us</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="#"
+                                class="text-gray-400 font-sans font-medium text-[14px] sm:text-[20px] hover:text-white transition">Order
+                                Delivery</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="#"
+                                class="text-gray-400 font-sans font-medium text-[14px] sm:text-[20px] hover:text-white transition">Payments
+                                & Tax</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="text-gray-400 font-sans font-medium text-[14px] sm:text-[20px] hover:text-white transition">Terms
+                                of
+                                Services</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 — Location -->
+                <div class="w-full min-[576px]:w-1/2 min-[991px]:w-1/4" data-aos="fade-up" data-aos-duration="800"
+                    data-aos-delay="300">
+                    <span class="text-white font-semibold text-[14px] sm:text-[25px] mb-5">Location</span>
+                    <p class="text-gray-400 font-sans font-medium text-[14px] sm:text-[20px] leading-relaxed mb-5">
+                        543 Country Club Ave,<br />
+                        NC 27587, London, UK<br />
+                        +1257 6541120
+                    </p>
+                    <!-- Payment Icons -->
+                    <div class="flex items-center">
+                        <img src="assets/images/footer-section/master-card-1.png" alt="Mastercard" class="h-7 mr-2" />
+                        <img src="assets/images/footer-section/google-pay-1.png" alt="GPay" class="h-7 mr-2" />
+                        <img src="assets/images/footer-section/visa-card-1.png" alt="Visa" class="h-7 mr-2" />
+                        <img src="assets/images/footer-section/paypal-card-1.png" alt="PayPal" class="h-7" />
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="flex flex-col sm:flex-row items-center justify-between pt-6">
+                <p class="text-gray-500 text-xs mb-6">©2024 ARR, All right reserved</p>
+                <div class="flex items-center mb-6">
+                    <a href="#" class="text-gray-500 text-xs hover:text-white transition mr-4">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 text-xs hover:text-white transition">Terms of Use</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+
+        // AOS Init
+        AOS.init({
+            once: true,
+            offset: 80,
+        });
+
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('bg-white/20', window.scrollY > 40);
+            nav.classList.toggle('bg-white/10', window.scrollY <= 40);
+        });
+
+        // Hamburger toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+    </script>
+
+</body>
+
+</html>
